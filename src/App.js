@@ -17,11 +17,11 @@ export default () => {
     }
     loadAll();
   },[]);
-  return (
+  return(
     <div className='page'>
       <section className='lists'>
         {movieList.map((item,key)=>(
-         <MovieRow key={key} title={item.title} items={item.items} />
+         <MovieRow key={key} title={item.title} items= {item.items} />
         ))}
 
       </section>
