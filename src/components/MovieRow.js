@@ -4,17 +4,16 @@ import './MovieRow.css';
 export default ({ title, items }) => {
     console.log(items)
     return (
-        <div>
+        <div className="MovieRow" >
             <h2>{title}</h2>
             <div className="movieRow--listarea">
-
-
-
-                {items.results?.length > 0 && items.results.map((item, key) => (
-                    
-                    <img key={key} src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} />
-                ))}
-
+                <div className="movieRow--list">
+                    {items.results?.length > 0 && items.results.map((item, key) => (
+                        <div key={key} className="movieRow--Item">
+                            <img src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} />
+                        </div>
+                    ))}
+                </div>
             </div>
 
         </div>
