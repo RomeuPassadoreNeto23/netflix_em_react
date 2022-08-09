@@ -12,9 +12,8 @@ export default () => {
     const loadAll = async () => {
       // pegando a lista total
       let list = await Tmdb.getHomeList();
-
-
       setMovieList(list);
+      
 
     }
     loadAll();
