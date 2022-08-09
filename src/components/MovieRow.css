@@ -14,10 +14,12 @@
 .movieRow--Item{
     display: inline-block;
     width: 150px;
+    cursor: pointer;
 }
 .movieRow--Item img {
     width: 100%;
     transform: scale(0.9);
+    transform: all ease 0.2s ;
 
 }
 .movieRow--Item img:hover {
