@@ -13,7 +13,12 @@ export default () => {
       // pegando a lista total
       let list = await Tmdb.getHomeList();
       setMovieList(list);
-      
+      // pegando a faetured
+      let originals = list.filter(i => i.slug === 'originals');
+      let randomChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1));
+      let chosen = originals[0].items.results[randomChosen];
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id,'tv');
+      console.log(chosenInfo)
 
     }
     loadAll();
