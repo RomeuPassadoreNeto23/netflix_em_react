@@ -1,11 +1,20 @@
 .featured {
     height: 100vh;
 }
+
 .featured--vetical {
-   /*  pega a mesma largura da featured */
+    /*  pega a mesma largura da featured */
     width: inherit;
-     /*  pega a mesma autura da featured */
+    /*  pega a mesma autura da featured */
     height: inherit;
-   
-    background: linear-gradient(to top, #111 10% ,transparent 90%)
+/* f */
+    background: linear-gradient(to top, #111 10%, transparent 90%)
+}
+
+.featured--horizontal {
+    /*  pega a mesma largura da featured */
+    width: inherit;
+    /*  pega a mesma autura da featured */
+    height: inherit;
+    background: linear-gradient(to right, #111 30%, transparent 70%)
 }

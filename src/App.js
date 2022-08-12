@@ -6,7 +6,7 @@ import FaeturedMovie from './components/FaeturedMovie'
 
 export default () => {
   const [movieList, setMovieList] = useState([]);
-  const [faeturedData, setFaeturedData] = useState(null); 
+  const [faeturedData, setFaeturedData] = useState(null);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -17,10 +17,10 @@ export default () => {
       let originals = list.filter(i => i.slug === 'originals');
       let randomChosen = Math.floor(Math.random() * (originals[0].items.results.length - 1));
       let chosen = originals[0].items.results[randomChosen];
-      let chosenInfo = await Tmdb.getMovieInfo(chosen.id,'tv');
+      let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
       setFaeturedData(chosenInfo);
       console.log()
-      
+
 
     }
     loadAll();
@@ -28,8 +28,8 @@ export default () => {
   return (
     <div className='page'>
 
-      {faeturedData && 
-          <FaeturedMovie item={faeturedData} /> 
+      {faeturedData &&
+        <FaeturedMovie item={faeturedData} />
 
       }
 
