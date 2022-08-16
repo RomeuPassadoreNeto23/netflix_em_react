@@ -3,6 +3,7 @@ import MovieRow from './components/MovieRow';
 import './App.css'
 import Tmdb from './Tmdb';
 import FaeturedMovie from './components/FaeturedMovie'
+import Header from './components/Header';
 
 export default () => {
   const [movieList, setMovieList] = useState([]);
@@ -27,6 +28,8 @@ export default () => {
   }, []);
   return (
     <div className='page'>
+
+      <Header />
 
       {faeturedData &&
         <FaeturedMovie item={faeturedData} />
