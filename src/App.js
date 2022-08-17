@@ -8,6 +8,7 @@ import Header from './components/Header';
 export default () => {
   const [movieList, setMovieList] = useState([]);
   const [faeturedData, setFaeturedData] = useState(null);
+  
 
   useEffect(() => {
     const loadAll = async () => {
