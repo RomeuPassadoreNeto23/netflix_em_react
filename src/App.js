@@ -8,7 +8,8 @@ import Header from './components/Header';
 export default () => {
   const [movieList, setMovieList] = useState([]);
   const [faeturedData, setFaeturedData] = useState(null);
-  
+  const [blackHeader, setBlackHeader] = useState(false);
+
 
   useEffect(() => {
     const loadAll = async () => {
@@ -27,10 +28,25 @@ export default () => {
     }
     loadAll();
   }, []);
+  useState(() => {
+    const scrollListener = async () => {
+      if (window.scrollY > 10) {
+        setBlackHeader(true);
+      } else {
+        setBlackHeader(false);
+      }
+
+    }
+    window.addEventListener('scroll', scrollListener)
+    return () => {
+      window.removeEventListener('scroll', scrollListener)
+    }
+
+  }, [])
   return (
     <div className='page'>
 
-      <Header />
+      <Header black={blackHeader} />
 
       {faeturedData &&
         <FaeturedMovie item={faeturedData} />
@@ -44,6 +60,13 @@ export default () => {
         ))}
 
       </section>
+      <footer>
+        feito com <span role="img" aria-label="coração">💖</span>pelo Romeu Passadore Neto
+        <br/>
+        direitos de imagem para Netflix
+        <br/>
+        dados pegos do site TheMoviedb.org
+      </footer>
 
     </div>
   );
