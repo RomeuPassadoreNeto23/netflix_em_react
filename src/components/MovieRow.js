@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-
-
-
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import './MovieRow.css';
 
 export default ({ title, items }) => {
+    const [scrollX, setScrollX] = useState(-400);
     const handlLeftArrow = () => {
+        let  x = scrollX + 150;
+        
+
+      
+        setScrollX(x)
+
 
     }
     const handlRightArrow = () => {
@@ -17,15 +21,16 @@ export default ({ title, items }) => {
     return (
         <div className="MovieRow" >
             <h2>{title}</h2>
-            <div className="MovieRow--left">
-                <NavigateBeforeIcon style={{fontSize: 50}} onclick={handlLeftArrow}/>
+            <div className="MovieRow--left" onClick={handlLeftArrow}>
+                <NavigateBeforeIcon style={{fontSize: 50}} />
             </div>
-            <div className="MovieRow--right">
-                <NavigateNextIcon style={{fontSize: 50}} onclick={handlRightArrow}/>
+            <div className="MovieRow--right" onClick={handlRightArrow}>
+                <NavigateNextIcon style={{fontSize: 50}} />
             </div>
             <div className="movieRow--listarea">
                 <div className="movieRow--list" style={{
-                     marginLeft: 0
+                     marginLeft: scrollX,
+                     width: items.results.length * 150
                    }}>
                     {items.results?.length > 0 && items.results.map((item, key) => (
                         <div key={key} className="movieRow--Item">
