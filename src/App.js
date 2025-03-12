@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MovieRow from './components/MovieRow';
-import './App.css'
+import './App.css';
 import Tmdb from './Tmdb';
-import FaeturedMovie from './components/FaeturedMovie'
+import FaeturedMovie from './components/FaeturedMovie';
 import Header from './components/Header';
 
-export default () => {
+const App = () => { // Atribua a função de seta a uma variável chamada App
   const [movieList, setMovieList] = useState([]);
   const [faeturedData, setFaeturedData] = useState(null);
   const [blackHeader, setBlackHeader] = useState(false);
-
 
   useEffect(() => {
     const loadAll = async () => {
@@ -22,12 +21,11 @@ export default () => {
       let chosen = originals[0].items.results[randomChosen];
       let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
       setFaeturedData(chosenInfo);
-      console.log()
-
-
-    }
+      console.log();
+    };
     loadAll();
   }, []);
+
   useState(() => {
     const scrollListener = async () => {
       if (window.scrollY > 10) {
@@ -35,40 +33,31 @@ export default () => {
       } else {
         setBlackHeader(false);
       }
-
-    }
-    window.addEventListener('scroll', scrollListener)
+    };
+    window.addEventListener('scroll', scrollListener);
     return () => {
-      window.removeEventListener('scroll', scrollListener)
-    }
+      window.removeEventListener('scroll', scrollListener);
+    };
+  }, []);
 
-  }, [])
   return (
     <div className='page'>
-
       <Header black={blackHeader} />
-
-      {faeturedData &&
-        <FaeturedMovie item={faeturedData} />
-
-      }
-
-
+      {faeturedData && <FaeturedMovie item={faeturedData} />}
       <section className='lists'>
         {movieList.map((item, key) => (
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
-
       </section>
       <footer>
         feito com <span role="img" aria-label="coração">💖</span>pelo Romeu Passadore Neto
-        <br/>
+        <br />
         direitos de imagem para Netflix
-        <br/>
+        <br />
         dados pegos do site TheMoviedb.org
       </footer>
-
     </div>
   );
+};
 
-}
+export default App; // Exporte a variável App como padrão

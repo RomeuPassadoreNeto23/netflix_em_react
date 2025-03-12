@@ -1,6 +1,5 @@
-import react from 'react';
 import './FaeturedMovie.css';
-export default ({ item }) => {
+const FaeturedMovie = ({ item }) => {
     console.log(item);
 
     let firstDate = new Date(item.first_air_date)
@@ -39,3 +38,4 @@ export default ({ item }) => {
     );
 
 }
+export default FaeturedMovie;
